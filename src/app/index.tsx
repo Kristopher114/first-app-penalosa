@@ -35,23 +35,34 @@ export default function HomeScreen() {
         <ThemedView style={styles.heroSection}>
           <AnimatedIcon />
           <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
+            My Portfolio
           </ThemedText>
         </ThemedView>
 
         <ThemedText type="code" style={styles.code}>
-          get started
+          my bio
         </ThemedText>
 
         <ThemedView type="backgroundElement" style={styles.stepContainer}>
           <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
+            title="Name"
+            hint={<ThemedText type="smallBold">Kristopher John H. Penalosa</ThemedText>}
           />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
+          <HintRow title="Course" 
+            hint={<ThemedText type="code">BSIT</ThemedText>}
+          />
           <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
+            title="Age"
+            hint={<ThemedText type="code">21</ThemedText>}
+          />
+
+          <HintRow
+            title="My Projects"
+            hint={
+              <ThemedText type="list" style={styles.listContent}>
+                {'\u2022 Reservation System\n\u2022 Online Ordering System\n\u2022 Room Reservation System\n\u2022 IoT Based Motion Detection with Camera for Surveillance'}
+              </ThemedText>
+            }
           />
         </ThemedView>
 
@@ -94,5 +105,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.three,
     paddingVertical: Spacing.four,
     borderRadius: Spacing.four,
+  },
+  listContent: {
+    lineHeight: 20,
+    textAlign: 'left',
   },
 });
