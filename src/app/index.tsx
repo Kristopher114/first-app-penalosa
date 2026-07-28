@@ -17,14 +17,14 @@ export default function HomeScreen() {
             <AnimatedIcon />
             <ThemedView style={styles.heroText}>
               <ThemedText type="code" style={styles.eyebrow}>
-                portfolio / 2026
+                portfolio
               </ThemedText>
               <ThemedText type="title" style={styles.title}>
                 Hi, I'm Kris.
               </ThemedText>
               <ThemedText themeColor="textSecondary" style={styles.subtitle}>
-                A BSIT student creating practical web and mobile experiences with an eye for clean
-                design and usability.
+                I am a BSIT student trying to create practical web and mobile applications with an eye for clean
+                design.
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -37,7 +37,10 @@ export default function HomeScreen() {
               <ThemedText type="smallBold">Developer</ThemedText>
             </ThemedView>
             <ThemedView type="backgroundSelected" style={styles.tag}>
-              <ThemedText type="smallBold">Design-minded</ThemedText>
+              <ThemedText type="smallBold"> Front End</ThemedText>
+            </ThemedView>
+            <ThemedView type="backgroundSelected" style={styles.tag}>
+              <ThemedText type="smallBold">Back End</ThemedText>
             </ThemedView>
           </ThemedView>
 
