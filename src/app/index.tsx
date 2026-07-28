@@ -1,4 +1,3 @@
-import * as Device from 'expo-device';
 import { Platform, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -9,61 +8,62 @@ import { ThemedView } from '@/components/themed-view';
 import { WebBadge } from '@/components/web-badge';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
 
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
-  return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
-  );
-}
-
 export default function HomeScreen() {
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            My Portfolio
-          </ThemedText>
-        </ThemedView>
-
-        <ThemedText type="code" style={styles.code}>
-          my bio
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Name"
-            hint={<ThemedText type="smallBold">Kristopher John H. Penalosa</ThemedText>}
-          />
-          <HintRow title="Course" 
-            hint={<ThemedText type="code">BSIT</ThemedText>}
-          />
-          <HintRow
-            title="Age"
-            hint={<ThemedText type="code">21</ThemedText>}
-          />
-
-          <HintRow
-            title="My Projects"
-            hint={
-              <ThemedText type="list" style={styles.listContent}>
-                {'\u2022 Reservation System\n\u2022 Online Ordering System\n\u2022 Room Reservation System\n\u2022 IoT Based Motion Detection with Camera for Surveillance'}
+        <ThemedView type="backgroundElement" style={styles.card}>
+          <ThemedView style={styles.heroSection}>
+            <AnimatedIcon />
+            <ThemedView style={styles.heroText}>
+              <ThemedText type="code" style={styles.eyebrow}>
+                portfolio / 2026
               </ThemedText>
-            }
-          />
+              <ThemedText type="title" style={styles.title}>
+                Hi, I'm Kris.
+              </ThemedText>
+              <ThemedText themeColor="textSecondary" style={styles.subtitle}>
+                A BSIT student creating practical web and mobile experiences with an eye for clean
+                design and usability.
+              </ThemedText>
+            </ThemedView>
+          </ThemedView>
+
+          <ThemedView style={styles.tagRow}>
+            <ThemedView type="backgroundSelected" style={styles.tag}>
+              <ThemedText type="smallBold">Student</ThemedText>
+            </ThemedView>
+            <ThemedView type="backgroundSelected" style={styles.tag}>
+              <ThemedText type="smallBold">Developer</ThemedText>
+            </ThemedView>
+            <ThemedView type="backgroundSelected" style={styles.tag}>
+              <ThemedText type="smallBold">Design-minded</ThemedText>
+            </ThemedView>
+          </ThemedView>
+
+          <ThemedView type="background" style={styles.infoCard}>
+            <ThemedText type="smallBold" style={styles.sectionTitle}>
+              Quick profile
+            </ThemedText>
+            <HintRow
+              title="Name"
+              hint={<ThemedText type="smallBold">Kristopher John H. Penalosa</ThemedText>}
+            />
+            <HintRow title="Course" hint={<ThemedText type="code">BSIT</ThemedText>} />
+            <HintRow title="Age" hint={<ThemedText type="code">21</ThemedText>} />
+          </ThemedView>
+
+          <ThemedView type="background" style={styles.infoCard}>
+            <ThemedText type="smallBold" style={styles.sectionTitle}>
+              Recent projects
+            </ThemedText>
+            <ThemedText type="list" style={styles.listContent}>
+              • Reservation System
+              {'\n'}• Online Ordering System
+              {'\n'}• Room Reservation System
+              {'\n'}• IoT-based Motion Detection with Camera for Surveillance
+            </ThemedText>
+          </ThemedView>
         </ThemedView>
 
         {Platform.OS === 'web' && <WebBadge />}
@@ -86,28 +86,53 @@ const styles = StyleSheet.create({
     paddingBottom: BottomTabInset + Spacing.three,
     maxWidth: MaxContentWidth,
   },
+  card: {
+    alignSelf: 'stretch',
+    padding: Spacing.four,
+    borderRadius: Spacing.four,
+    gap: Spacing.three,
+  },
   heroSection: {
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
+    gap: Spacing.three,
+    paddingVertical: Spacing.two,
+  },
+  heroText: {
+    alignItems: 'center',
+    gap: Spacing.one,
+  },
+  eyebrow: {
+    textTransform: 'uppercase',
+    letterSpacing: 1.2,
   },
   title: {
     textAlign: 'center',
   },
-  code: {
-    textTransform: 'uppercase',
+  subtitle: {
+    textAlign: 'center',
+    lineHeight: 22,
   },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
+  tagRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: Spacing.two,
+  },
+  tag: {
+    borderRadius: 999,
+    paddingHorizontal: Spacing.two,
+    paddingVertical: Spacing.half,
+  },
+  infoCard: {
+    borderRadius: Spacing.three,
     paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
+    paddingVertical: Spacing.three,
+    gap: Spacing.two,
+  },
+  sectionTitle: {
+    marginBottom: Spacing.half,
   },
   listContent: {
     lineHeight: 20,
-    textAlign: 'left',
   },
 });
